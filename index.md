@@ -3,8 +3,9 @@
 Business Analytics Student | Data Analysis | Python | SQL | Tableau
 
 ## About Me
-I am a Business Analytics student with experience in data analysis,
-SQL database design, and Tableau data visualisation.
+I am a Business Analytics student with hands-on experience in data analysis,
+SQL database design, and Tableau data visualisation. I enjoy working with
+real-world datasets to uncover insights and support data-driven decisions.
 
 ## Projects
 
