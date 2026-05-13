@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manish Dhital — Business Analyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple: #7f77dd;
+      --purple-dark: #534ab7;
+      --purple-deep: #3c3489;
+      --teal: #1d9e75;
+      --bg: #0a0a0f;
+      --bg-card: #0f0f18;
+      --bg-card2: #131320;
+      --border: #1e1e2e;
+      --border-light: #2a2840;
+      --text-primary: #f0eeff;
+      --text-secondary: #c0bedd;
+      --text-muted: #8a88a2;
+      --text-dim: #555468;
+      --text-dimmer: #38364e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Syne', sans-serif;
+      background: var(--bg);
+      color: #e8e6f0;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,15,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 0.5px solid var(--border);
+      padding: 0 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+    }
+
+    .nav-brand {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--purple);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: var(--text-dim);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--purple); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 5rem 2.5rem 3.5rem;
+      border-bottom: 0.5px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(83,74,183,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: 20%;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(29,158,117,0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .tag {
+      display: inline-block;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: var(--teal);
+      background: rgba(29,158,117,0.1);
+      border: 0.5px solid rgba(29,158,117,0.3);
+      padding: 4px 12px;
+      border-radius: 3px;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.3rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.7rem;
+      color: var(--text-primary);
+    }
+
+    .hero h1 span { color: var(--purple); }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.75;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-pills {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      padding: 6px 13px;
+      border-radius: 3px;
+      border: 0.5px solid var(--border-light);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .pill:hover { border-color: var(--purple); color: #c4c0f0; }
+    .pill i { font-size: 13px; }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 900px; margin: 0 auto; }
+
+    .section {
+      padding: 2.2rem 2.5rem;
+      border-bottom: 0.5px solid #111118;
+    }
+
+    .sec-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .sec-label::after {
+      content: '';
+      flex: 1;
+      height: 0.5px;
+      background: #16161f;
+    }
+
+    /* ── STATS ── */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .stat {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 8px;
+      padding: 1.1rem;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--purple);
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+
+    .stat-lbl {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      color: var(--text-dim);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── EXPERIENCE ── */
+    .exp-card {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem 1.6rem;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 12px;
+      transition: border-color 0.2s;
+    }
+
+    .exp-card:last-child { margin-bottom: 0; }
+    .exp-card:hover { border-color: #2e2c48; }
+
+    .exp-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--purple-dark);
+      border-radius: 3px 0 0 3px;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .exp-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #e0ddf8;
+    }
+
+    .exp-badge {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      color: var(--text-dim);
+      background: var(--bg-card2);
+      padding: 3px 10px;
+      border-radius: 3px;
+      border: 0.5px solid #222232;
+      white-space: nowrap;
+    }
+
+    .exp-company {
+      font-size: 0.82rem;
+      color: var(--purple);
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .exp-loc {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      color: var(--text-dimmer);
+      margin-bottom: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .exp-loc i { font-size: 11px; }
+
+    .bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .bullets li {
+      font-size: 0.87rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+
+    .bullets li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--purple-dark);
+      font-size: 1rem;
+    }
+
+    .bullets li strong { color: #c0bedd; font-weight: 600; }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 10px;
+    }
+
+    .proj-card {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem 1.3rem;
+      transition: border-color 0.2s;
+    }
+
+    .proj-card:hover { border-color: #2e2c48; }
+
+    .proj-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #d0ceed;
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+
+    .proj-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 9px;
+    }
+
+    .proj-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 8px;
+      color: var(--purple-dark);
+      background: rgba(83,74,183,0.1);
+      border: 0.5px solid rgba(83,74,183,0.25);
+      padding: 2px 7px;
+      border-radius: 2px;
+    }
+
+    .proj-desc {
+      font-size: 0.79rem;
+      color: #5e5c78;
+      line-height: 1.6;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 8px;
+    }
+
+    .skill-chip {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 6px;
+      padding: 10px 13px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: border-color 0.2s;
+    }
+
+    .skill-chip:hover { border-color: #2e2c48; }
+    .skill-chip i { font-size: 18px; color: var(--purple); flex-shrink: 0; }
+
+    .sk-name { font-size: 0.82rem; font-weight: 600; color: #b8b6d4; }
+    .sk-sub { font-family: 'Space Mono', monospace; font-size: 8px; color: var(--text-dimmer); margin-top: 1px; }
+
+    .soft-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .soft-chip {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 13px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .soft-chip i { font-size: 15px; color: var(--teal); }
+
+    /* ── EDUCATION ── */
+    .edu-stack { display: flex; flex-direction: column; gap: 10px; }
+
+    .edu-card {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: border-color 0.2s;
+    }
+
+    .edu-card:hover { border-color: #2e2c48; }
+
+    .edu-icon {
+      width: 42px; height: 42px;
+      background: rgba(83,74,183,0.1);
+      border: 0.5px solid rgba(83,74,183,0.25);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .edu-icon i { font-size: 20px; color: var(--purple); }
+
+    .edu-deg { font-size: 0.92rem; font-weight: 700; color: #d8d5f0; margin-bottom: 3px; }
+    .edu-school { font-size: 0.8rem; color: var(--purple); font-weight: 600; margin-bottom: 4px; }
+
+    .edu-meta {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      color: var(--text-dimmer);
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .gpa { color: var(--teal); }
+
+    /* ── CERTS ── */
+    .cert-row { display: flex; flex-direction: column; gap: 8px; }
+
+    .cert-item {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 6px;
+      padding: 11px 15px;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      transition: border-color 0.2s;
+    }
+
+    .cert-item:hover { border-color: #2e2c48; }
+    .cert-item i { font-size: 19px; color: var(--purple); flex-shrink: 0; }
+
+    .cert-name { font-size: 0.85rem; font-weight: 600; color: #c0bedd; }
+    .cert-issuer { font-family: 'Space Mono', monospace; font-size: 9px; color: var(--text-dimmer); margin-top: 2px; }
+
+    /* ── CONTACT ── */
+    .contact-row { display: flex; gap: 18px; flex-wrap: wrap; }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-item:hover { color: var(--purple); }
+    .contact-item i { font-size: 16px; color: var(--purple-dark); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: var(--text-dimmer);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── FADE IN ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero > * {
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .hero > *:nth-child(1) { animation-delay: 0.05s; }
+    .hero > *:nth-child(2) { animation-delay: 0.15s; }
+    .hero > *:nth-child(3) { animation-delay: 0.25s; }
+    .hero > *:nth-child(4) { animation-delay: 0.35s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      nav { padding: 0 1.2rem; }
+      .nav-links { gap: 1rem; }
+      .hero { padding: 3.5rem 1.2rem 2.5rem; }
+      .section { padding: 1.8rem 1.2rem; }
+      .stat-row { grid-template-columns: repeat(3, 1fr); }
+      .stat-num { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-brand">manish.dhital</span>
+    <ul class="nav-links">
+      <li><a href="#experience">experience</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#education">education</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="tag">// MBusAnalytics · UTS Sydney · open to roles</div>
+      <h1>Manish<br><span>Dhital</span></h1>
+      <p class="hero-sub">Business Analytics postgraduate at UTS with hands-on experience in SQL, Power BI, Tableau, and Excel. Passionate about turning raw data into decisions — from dashboards to supply chain forecasting.</p>
+      <div class="hero-pills">
+        <a class="pill" href="#contact"><i class="ti ti-map-pin"></i> Sydney, NSW 2141</a>
+        <a class="pill" href="tel:0405508518"><i class="ti ti-phone"></i> 0405 508 518</a>
+        <a class="pill" href="mailto:manishmanis64@gmail.com"><i class="ti ti-mail"></i> manishmanis64@gmail.com</a>
+        <a class="pill" href="https://www.linkedin.com/in/manish-dhital" target="_blank" rel="noopener"><i class="ti ti-brand-linkedin"></i> LinkedIn</a>
+        <a class="pill" href="https://github.com/ManishDhital1" target="_blank" rel="noopener"><i class="ti ti-brand-github"></i> GitHub</a>
+      </div>
+    </section>
+
+    <!-- HIGHLIGHTS -->
+    <section class="section">
+      <div class="sec-label">highlights</div>
+      <div class="stat-row">
+        <div class="stat"><div class="stat-num">20+</div><div class="stat-lbl">projects tracked</div></div>
+        <div class="stat"><div class="stat-num">~25%</div><div class="stat-lbl">cost reduction</div></div>
+        <div class="stat"><div class="stat-num">~18%</div><div class="stat-lbl">faster delivery</div></div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience">
+      <div class="sec-label">experience</div>
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-title">Business Analyst</div>
+          <div class="exp-badge">Jan 2022 — Jan 2025 · 3 yrs</div>
+        </div>
+        <div class="exp-company">Dhital Furniture Center</div>
+        <div class="exp-loc"><i class="ti ti-map-pin"></i> Kathmandu, Nepal · Previously Data Entry Associate &amp; Junior BA</div>
+        <ul class="bullets">
+          <li>Built and maintained <strong>Excel dashboards</strong> and automated reports tracking inventory, sales performance, and operational metrics across <strong>20+ projects</strong> using advanced formulas, pivot tables, and multi-source data consolidation.</li>
+          <li>Cleaned, prepared, and analyzed datasets using <strong>SQL and Excel</strong> to identify demand patterns, stock trends, and operational inefficiencies — delivering data-driven recommendations to senior management.</li>
+          <li>Collaborated with procurement, operations, and production teams to optimize inventory planning and scheduling, improving project completion time by <strong>~18%</strong> and reducing costs by <strong>~25%</strong>.</li>
+          <li>Conducted <strong>regression modelling and trend analysis in Python</strong> to support supply chain forecasting and improve business decision-making.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <div class="sec-label">projects</div>
+      <div class="projects-grid">
+
+        <div class="proj-card">
+          <div class="proj-header" style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+            <div class="proj-title" style="margin-bottom:0">Apartment Rent Analysis</div>
+            <a href="https://github.com/ManishDhital1/apartment-rent-analysis" target="_blank" rel="noopener" style="color:var(--text-dim);font-size:13px;flex-shrink:0;margin-left:8px"><i class="ti ti-brand-github"></i></a>
+          </div>
+          <div class="proj-tags">
+            <span class="proj-tag">Python</span>
+            <span class="proj-tag">Excel</span>
+            <span class="proj-tag">Tableau</span>
+          </div>
+          <div class="proj-desc">Analyzed a classified apartment rental dataset to identify pricing patterns, demand trends, and key factors influencing rent. Delivered a written report with data-driven findings and visualizations.</div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-header" style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+            <div class="proj-title" style="margin-bottom:0">Customer Analytics &amp; Channel Performance</div>
+            <a href="https://github.com/ManishDhital1/customer-analytics-channel-performance" target="_blank" rel="noopener" style="color:var(--text-dim);font-size:13px;flex-shrink:0;margin-left:8px"><i class="ti ti-brand-github"></i></a>
+          </div>
+          <div class="proj-tags">
+            <span class="proj-tag">Python</span>
+            <span class="proj-tag">Tableau</span>
+          </div>
+          <div class="proj-desc">Analyzed customer behavior and distribution channel effectiveness to surface consumer trends. Produced a comprehensive report with actionable recommendations based on quantitative findings.</div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-header" style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+            <div class="proj-title" style="margin-bottom:0">Premier League SQL Database</div>
+            <a href="https://github.com/ManishDhital1/premier-league-sql-database" target="_blank" rel="noopener" style="color:var(--text-dim);font-size:13px;flex-shrink:0;margin-left:8px"><i class="ti ti-brand-github"></i></a>
+          </div>
+          <div class="proj-tags">
+            <span class="proj-tag">SQL</span>
+          </div>
+          <div class="proj-desc">Built and queried a relational database of Premier League football data. Performed structured analysis using joins, subqueries, and aggregations to extract performance insights and produce a written report.</div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-header" style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+            <div class="proj-title" style="margin-bottom:0">Australian Open Analysis</div>
+            <a href="https://github.com/ManishDhital1/Australian-Open" target="_blank" rel="noopener" style="color:var(--text-dim);font-size:13px;flex-shrink:0;margin-left:8px"><i class="ti ti-brand-github"></i></a>
+          </div>
+          <div class="proj-tags">
+            <span class="proj-tag">Tableau</span>
+            <span class="proj-tag">Data Visualization</span>
+          </div>
+          <div class="proj-desc">Analyzed Australian Open tournament data to uncover player performance trends and match statistics. Created Tableau visualizations and a detailed analytical report of key findings.</div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-title">Pricing &amp; Revenue Analytics</div>
+          <div class="proj-tags">
+            <span class="proj-tag">SQL</span>
+            <span class="proj-tag">Excel</span>
+            <span class="proj-tag">Power BI</span>
+          </div>
+          <div class="proj-desc">Analyzed product-level demand, pricing sensitivity, and revenue trends. Built interactive dashboards to monitor commercial KPIs and delivered recommendations to optimize pricing and category performance.</div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-title">Supply Chain Network Design &amp; Simulation</div>
+          <div class="proj-tags">
+            <span class="proj-tag">Supply Chain</span>
+            <span class="proj-tag">Simulation</span>
+            <span class="proj-tag">UTS</span>
+          </div>
+          <div class="proj-desc">University project modelling supply chain network design and simulation for Arnott's Tim Tam — covering network optimisation and scenario analysis.</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills">
+      <div class="sec-label">technical skills</div>
+      <div class="skills-grid">
+        <div class="skill-chip"><i class="ti ti-table"></i><div><div class="sk-name">Excel</div><div class="sk-sub">advanced · pivot tables · automation</div></div></div>
+        <div class="skill-chip"><i class="ti ti-database"></i><div><div class="sk-name">SQL</div><div class="sk-sub">joins · subqueries · extraction</div></div></div>
+        <div class="skill-chip"><i class="ti ti-chart-bar"></i><div><div class="sk-name">Power BI</div><div class="sk-sub">dashboards · data modeling</div></div></div>
+        <div class="skill-chip"><i class="ti ti-chart-dots"></i><div><div class="sk-name">Tableau</div><div class="sk-sub">visualization · storytelling</div></div></div>
+        <div class="skill-chip"><i class="ti ti-brand-python"></i><div><div class="sk-name">Python</div><div class="sk-sub">pandas · matplotlib</div></div></div>
+        <div class="skill-chip"><i class="ti ti-adjustments"></i><div><div class="sk-name">Data Cleaning</div><div class="sk-sub">prep &amp; transformation</div></div></div>
+        <div class="skill-chip"><i class="ti ti-trending-up"></i><div><div class="sk-name">Regression Modelling</div><div class="sk-sub">forecasting &amp; trends</div></div></div>
+        <div class="skill-chip"><i class="ti ti-report-analytics"></i><div><div class="sk-name">Business Reporting</div><div class="sk-sub">analysis &amp; insights</div></div></div>
+      </div>
+
+      <div class="sec-label" style="margin-top:1.5rem;margin-bottom:1rem">professional skills</div>
+      <div class="soft-grid">
+        <div class="soft-chip"><i class="ti ti-bulb"></i> Analytical thinking</div>
+        <div class="soft-chip"><i class="ti ti-users"></i> Stakeholder engagement</div>
+        <div class="soft-chip"><i class="ti ti-eye-check"></i> Attention to detail</div>
+        <div class="soft-chip"><i class="ti ti-messages"></i> Written &amp; verbal comms</div>
+        <div class="soft-chip"><i class="ti ti-clock"></i> Time management</div>
+        <div class="soft-chip"><i class="ti ti-shield-check"></i> Ethical data handling</div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="section" id="education">
+      <div class="sec-label">education</div>
+      <div class="edu-stack">
+        <div class="edu-card">
+          <div class="edu-icon"><i class="ti ti-school"></i></div>
+          <div>
+            <div class="edu-deg">Masters of Business Analytics</div>
+            <div class="edu-school">University of Technology Sydney (UTS)</div>
+            <div class="edu-meta">
+              <span>Sydney, Australia</span>
+              <span>2025 · ongoing</span>
+              <span class="gpa">CGPA 6.25 / 7.0</span>
+            </div>
+          </div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-icon"><i class="ti ti-certificate"></i></div>
+          <div>
+            <div class="edu-deg">Masters of Arts in Economics</div>
+            <div class="edu-school">Tribhuvan University</div>
+            <div class="edu-meta">
+              <span>Kathmandu, Nepal</span>
+              <span>2024</span>
+              <span class="gpa">CGPA 3.34 / 4.0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section class="section">
+      <div class="sec-label">certifications</div>
+      <div class="cert-row">
+        <div class="cert-item">
+          <i class="ti ti-award"></i>
+          <div>
+            <div class="cert-name">Data Science &amp; Machine Learning</div>
+            <div class="cert-issuer">Skill Shiksha · Nov 2024</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact" style="border-bottom:none">
+      <div class="sec-label">contact</div>
+      <div class="contact-row">
+        <a class="contact-item" href="tel:0405508518"><i class="ti ti-phone"></i> 0405 508 518</a>
+        <a class="contact-item" href="mailto:manishmanis64@gmail.com"><i class="ti ti-mail"></i> manishmanis64@gmail.com</a>
+        <a class="contact-item" href="https://www.linkedin.com/in/manish-dhital" target="_blank" rel="noopener"><i class="ti ti-brand-linkedin"></i> linkedin.com/in/manish-dhital</a>
+        <span class="contact-item"><i class="ti ti-map-pin"></i> Sydney NSW 2141</span>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    © 2026 Manish Dhital · built with intention
+  </footer>
+
+</body>
+</html>
